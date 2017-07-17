@@ -130,7 +130,6 @@ public class GoodsBeanBO {
 	}
 	
 	public void CloseDatabase(){
-		
 		try{
 			if(rest != null){
 				rest.close();
