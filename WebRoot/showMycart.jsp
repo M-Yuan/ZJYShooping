@@ -46,9 +46,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <td align="center">1</td>
                 <td align="center">黑白森林</td>
                 <td align="center">￥45.0</td>
-                <td width="9%" align="center"><input name="newNum" type="text"  size="7" id="newNum" value="1" /></td>
-                <td width="9%" align="center">删除</td>
-                <td width="9%" align="center">查看</td>
+                <td width="9%" align="center"><input type="hidden" name="goodsId" value="1" /><input name="newNum" type="text" size="7" id="newNum" value="1" /></td>
+                <td width="9%" align="center"><a href="">删除</a></td>
+                <td width="9%" align="center"><a href="">查看</a></td>
               </tr>
               <tr>
                 <td>&nbsp;</td>

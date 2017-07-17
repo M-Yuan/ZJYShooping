@@ -1,6 +1,6 @@
 /**
  * @FileName:     ShoopingClServlet.java
- * @Description:  TODO(Do with a phrase to describe the file)
+ * @Description:  处理购物操作
  * @Copyright:    Copyright(C) 1998-2017
  * @Createdate:	  2017年7月15日 下午3:42:01 
  *
@@ -19,6 +19,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.zjy.model.*;
+import java.util.*;
 
 /**
  * @ClassName:    ShoopingClServlet
@@ -47,11 +50,61 @@ public class ShoopingClServlet extends HttpServlet {
 
 		String type = request.getParameter("type");
 		
-		if(type.equals("")){
-			
+		// 解决多个购物车问题 -- 利用session只需一个购物车就足够		
+		// 先试图从session中取出一个购物车，如果不存在，创建session来保存第一个购物车
+		MycartBO mycartBO = (MycartBO)request.getSession().getAttribute("mycart");
+		
+		if(mycartBO == null){
+			// 说明该用户第一次购物,创建一个购物车，并放入sesion
+			mycartBO = new MycartBO();
+			request.getSession().setAttribute("mycart", mycartBO);
 		}
 		
 		
+		
+		if(type.equals("buyGoods")){
+			// 获得要购物的货物的id
+			String goodsId = request.getParameter("goodsId");
+			
+			// 默认情况下，购买书的数量是1
+			mycartBO.addGoods(goodsId, "1");
+			
+			System.out.println("ShoopingClServlet buyGoods");
+		}else if(type.equals("deleteGoods")){
+			// 获得要购物的货物的id
+			String goodsId = request.getParameter("goodsId");
+			
+			mycartBO.deleteGoods(goodsId);
+			
+			System.out.println("ShoopingClServlet deleteGoods");
+		}else if(type.equals("updateGoods")){
+			//用户希望修改数量
+			//怎样在servlet中得到货物的id,和新的数量
+			//接收货物id 
+			
+			String goodsId[]=request.getParameterValues("goodsId");
+			String newNums[]=request.getParameterValues("newNums");
+			
+			
+			//测试一下看看是否得到新的修改值
+			for(int i=0;i<goodsId.length;i++){
+				
+				System.out.println("id==="+goodsId[i]+"  数量="+newNums[i]);
+				//修改
+				mycartBO.updateGoods(goodsId[i], newNums[i]);
+			}
+			
+		}else if(type.equals("showGoods")){
+			//do nothing
+		}else if(type.equals("clearGoods")){	
+			mycartBO.clearGoods();
+		}
+		
+		ArrayList alMycartInfo = new ArrayList();
+		alMycartInfo = mycartBO.getMycartInfo();
+		
+		request.setAttribute("mycartInfo", alMycartInfo);
+		request.getRequestDispatcher("showMycart.jsp").forward(request, response);
 	}
 
 	/**
