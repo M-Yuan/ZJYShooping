@@ -1,7 +1,12 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*,com.zjy.model.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+// 取出从ShoopingClServlet传递的购物车信息
+ArrayList arrList = (ArrayList)request.getAttribute("mycartInfo");
+
+
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -24,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body topmargin="0" background="images/bg.bmp">
   <center>
-<table width="80%" border="1" align="center" cellpadding="0" cellspacing="0">
+<table width="80%" border="1" align="center" class="showMycart01" cellpadding="0" cellspacing="0">
 	  <tr>
 	    <td height="142" colspan="2" align="center">
 			<jsp:include flush="true" page="head.jsp"></jsp:include>
@@ -42,14 +47,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <td width="27%" align="center">单价</td>
                 <td colspan="3" align="center">数量</td>
               </tr>
+              <%
+              for(int ilop = 0; ilop < arrList.size(); ilop++){
+            	  // 从arrList中取出货物
+            	  GoodsBean goodsBean = (GoodsBean)arrList.get(ilop);
+              
+              
+              %>
+              
+              
               <tr>
-                <td align="center">1</td>
-                <td align="center">黑白森林</td>
-                <td align="center">￥45.0</td>
+                <td align="center"><%=goodsBean.get_goodsId() %></td>
+                <td align="center"><%=goodsBean.get_goodsName() %></td>
+                <td align="center">￥<%=goodsBean.get_goodsPrice() %></td>
                 <td width="9%" align="center"><input type="hidden" name="goodsId" value="1" /><input name="newNum" type="text" size="7" id="newNum" value="1" /></td>
                 <td width="9%" align="center"><a href="">删除</a></td>
                 <td width="9%" align="center"><a href="">查看</a></td>
               </tr>
+              <%
+              }
+              %>
               <tr>
                 <td>&nbsp;</td>
                 <td align="center"><input type="button" name="Submit" value="删除全部书籍" /></td>

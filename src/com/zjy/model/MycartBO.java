@@ -90,13 +90,13 @@ public class MycartBO {
 				// 从HashMap中取出goodsId
 				String goodsId = (String)iter.next();
 				
-				if(iter.next()){
+				if(iter.hasNext()){
 					sqlTemp += goodsId + ","; 
 				}else{
-					sqlTemp += ")";
+					sqlTemp += goodsId + ");";
 				}
 			}
-			
+				
 			sql += sqlTemp;
 			
 			conn = new ConnectDataBase().getConnectMysql();
@@ -106,22 +106,22 @@ public class MycartBO {
 			// 清空总价
 			this.zeroTotalPrice();
 			
-			while(rest.next){
+			while(rest.next()){
 				GoodsBean goodsBean = new GoodsBean();
-				int goodsId=rs.getInt(1);
+				int goodsId=rest.getInt(1);
 				goodsBean.set_goodsId(goodsId);
-				goodsBean.set_goodsName(rs.getString(2));
-				goodsBean.set_goodsIntro(rs.getString(3));
-				float unitPrice=rs.getFloat(4);
+				goodsBean.set_goodsName(rest.getString(2));
+				goodsBean.set_goodsIntro(rest.getString(3));
+				float unitPrice=rest.getFloat(4);
 				goodsBean.set_goodsPrice(unitPrice);
-				goodsBean.set_goodsNum(rs.getInt(5));
-				goodsBean.set_goodsPublisher(rs.getString(6));
-				goodsBean.set_goodsPhoto(rs.getString(7));
-				goodsBean.set_goodsType(rs.getString(8));
+				goodsBean.set_goodsNum(rest.getInt(5));
+				goodsBean.set_goodsPublisher(rest.getString(6));
+				goodsBean.set_goodsPhoto(rest.getString(7));
+				goodsBean.set_goodsType(rest.getString(8));
 				
 				this.totalPrice = this.totalPrice + unitPrice * Integer.parseInt(this.getGoodsNumByGoodsId(goodsId+""));
 				
-				arrList.addGoods(goodsBean);
+				arrList.add(goodsBean);
 			}
 			
 			
@@ -151,7 +151,7 @@ public class MycartBO {
 	 * @Description: 通过goodsId来获取到goodsNum
 	 */
 	public String getGoodsNumByGoodsId(String goodsId){
-		return (String)hsMap.get(goodsId)
+		return (String)hsMap.get(goodsId);
 	}
 	 
 	/**

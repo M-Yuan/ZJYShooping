@@ -48,20 +48,35 @@ public class ShoopingClServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 
-		String type = request.getParameter("type");
+		//String type = request.getParameter("type");
+		
+		// 获得要购物的货物的id
+		String goodsId = request.getParameter("goodsId");
 		
 		// 解决多个购物车问题 -- 利用session只需一个购物车就足够		
-		// 先试图从session中取出一个购物车，如果不存在，创建session来保存第一个购物车
-		MycartBO mycartBO = (MycartBO)request.getSession().getAttribute("mycart");
+		// 先试图从session中取出一个购物车，如果不存在，创建session来保存第一个购物车（每个用户都有自己独立的session空间）
+		MycartBO mycartBO = (MycartBO)request.getSession().getAttribute("MycartSession");
 		
 		if(mycartBO == null){
 			// 说明该用户第一次购物,创建一个购物车，并放入sesion
 			mycartBO = new MycartBO();
-			request.getSession().setAttribute("mycart", mycartBO);
+			request.getSession().setAttribute("MycartSession", mycartBO);
 		}
 		
 		
 		
+		// 默认情况下，购买书的数量是1
+		mycartBO.addGoods(goodsId, "1");
+		
+		
+		ArrayList alMycartInfo = new ArrayList();
+		alMycartInfo = mycartBO.getMycartInfo();
+		
+		request.setAttribute("mycartInfo", alMycartInfo);
+		request.getRequestDispatcher("showMycart.jsp").forward(request, response);
+		
+		
+		/*
 		if(type.equals("buyGoods")){
 			// 获得要购物的货物的id
 			String goodsId = request.getParameter("goodsId");
@@ -99,12 +114,8 @@ public class ShoopingClServlet extends HttpServlet {
 		}else if(type.equals("clearGoods")){	
 			mycartBO.clearGoods();
 		}
+		*/
 		
-		ArrayList alMycartInfo = new ArrayList();
-		alMycartInfo = mycartBO.getMycartInfo();
-		
-		request.setAttribute("mycartInfo", alMycartInfo);
-		request.getRequestDispatcher("showMycart.jsp").forward(request, response);
 	}
 
 	/**

@@ -1,8 +1,8 @@
-drop database zjyshooping;
+drop database testdb3;
 
-create database zjyshooping;
+create database testdb3;
 
-use zjyshooping;
+use testdb3;
 
 
 --普通用户表

@@ -36,7 +36,9 @@ goodsBean = (GoodsBean)request.getAttribute("goodsInfo");
 		
 		// 响应点击购物事件
 		function BuyGoods(goodsId){
-			window.open("ShoopingClServlet?type=buyGoods&goodsId="+goodsId, "_self");
+			//System.out.println("javascript function BuyGoods(goodsId)");
+			window.open("ShoopingClServlet?goodsId="+goodsId, "_self");
+			//window.alert(goodsId);
 		}
 	</script>
 	
@@ -78,7 +80,7 @@ goodsBean = (GoodsBean)request.getAttribute("goodsInfo");
         <td>&nbsp;</td>
       </tr>
       <tr>
-        <td height="142" valign="top">这是一部好片</td>
+        <td height="142" valign="top"><%=goodsBean.get_goodsIntro() %></td>
       </tr>
       <tr>
         <td colspan="2">
