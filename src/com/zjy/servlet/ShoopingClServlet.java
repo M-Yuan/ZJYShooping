@@ -48,10 +48,11 @@ public class ShoopingClServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 
-		//String type = request.getParameter("type");
+		// 获得要购物的操作类型
+		String type = request.getParameter("type");
 		
 		// 获得要购物的货物的id
-		String goodsId = request.getParameter("goodsId");
+		//String goodsId = request.getParameter("goodsId");
 		
 		// 解决多个购物车问题 -- 利用session只需一个购物车就足够		
 		// 先试图从session中取出一个购物车，如果不存在，创建session来保存第一个购物车（每个用户都有自己独立的session空间）
@@ -64,19 +65,6 @@ public class ShoopingClServlet extends HttpServlet {
 		}
 		
 		
-		
-		// 默认情况下，购买书的数量是1
-		mycartBO.addGoods(goodsId, "1");
-		
-		
-		ArrayList alMycartInfo = new ArrayList();
-		alMycartInfo = mycartBO.getMycartInfo();
-		
-		request.setAttribute("mycartInfo", alMycartInfo);
-		request.getRequestDispatcher("showMycart.jsp").forward(request, response);
-		
-		
-		/*
 		if(type.equals("buyGoods")){
 			// 获得要购物的货物的id
 			String goodsId = request.getParameter("goodsId");
@@ -97,24 +85,30 @@ public class ShoopingClServlet extends HttpServlet {
 			//怎样在servlet中得到货物的id,和新的数量
 			//接收货物id 
 			
-			String goodsId[]=request.getParameterValues("goodsId");
-			String newNums[]=request.getParameterValues("newNums");
+			String goodsIds[]=request.getParameterValues("goodsId");
+			String goodsNums[]=request.getParameterValues("goodsNum");
 			
 			
 			//测试一下看看是否得到新的修改值
-			for(int i=0;i<goodsId.length;i++){
+			for(int i = 0; i < goodsIds.length; i++){
 				
-				System.out.println("id==="+goodsId[i]+"  数量="+newNums[i]);
+				System.out.println("id==="+goodsIds[i]+"  数量="+goodsNums[i]);
 				//修改
-				mycartBO.updateGoods(goodsId[i], newNums[i]);
+				mycartBO.updateGoods(goodsIds[i], goodsNums[i]);
 			}
 			
 		}else if(type.equals("showGoods")){
 			//do nothing
+			System.out.println("ShoopingClServlet showGoods");
 		}else if(type.equals("clearGoods")){	
 			mycartBO.clearGoods();
 		}
-		*/
+		
+		ArrayList alMycartInfo = new ArrayList();
+		alMycartInfo = mycartBO.getMycartInfo();
+		
+		request.setAttribute("mycartInfo", alMycartInfo);
+		request.getRequestDispatcher("showMycart.jsp").forward(request, response);
 		
 	}
 

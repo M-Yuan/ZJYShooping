@@ -37,7 +37,7 @@ goodsBean = (GoodsBean)request.getAttribute("goodsInfo");
 		// 响应点击购物事件
 		function BuyGoods(goodsId){
 			//System.out.println("javascript function BuyGoods(goodsId)");
-			window.open("ShoopingClServlet?goodsId="+goodsId, "_self");
+			window.open("ShoopingClServlet?type=buyGoods&goodsId="+goodsId, "_self");
 			//window.alert(goodsId);
 		}
 	</script>

@@ -21,11 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	<style type="text/css">
-		a:link { color:#dd3409;text-decoration:none; font-size:13px; }/* 超链接的样式 */
-		a:visited { color:#9f301d;text-decoration:none; }
-		a:visited:hover { color:#9f301d;text-decoration:underline; }
-		a:hover { color:#dd3409;text-decoration:underline; }
-		a:active { color:#ff3300;text-decoration:underline; } 
+
 　　 </style>
 
   </head>

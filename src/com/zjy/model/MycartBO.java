@@ -93,11 +93,13 @@ public class MycartBO {
 				if(iter.hasNext()){
 					sqlTemp += goodsId + ","; 
 				}else{
-					sqlTemp += goodsId + ");";
+					sqlTemp += goodsId;
 				}
 			}
 				
 			sql += sqlTemp;
+			sql += ");";
+			System.out.println("getMycartInfo sql = " + sql);
 			
 			conn = new ConnectDataBase().getConnectMysql();
 			prst = conn.prepareStatement(sql);

@@ -1,8 +1,8 @@
-drop database testdb3;
+drop database ZJYShooping;
 
-create database testdb3;
+create database ZJYShooping;
 
-use testdb3;
+use ZJYShooping;
 
 
 --普通用户表
@@ -73,7 +73,10 @@ insert into goods values(NULL, '英雄本色', '这是一部好片', 10, 1, '香港嘉禾出品'
 insert into goods values(NULL, '快餐车', '这是一部好片', 56, 1, '香港嘉禾出品', '05.jpg', '香港电影');
 insert into goods values(NULL, '至尊无上', '这是一部好片', 56, 1, '香港嘉禾出品', '01.jpg', '香港电影');
 insert into goods values(NULL, '无间道', '这是一部好片', 56, 1, '香港嘉禾出品', '01.jpg', '香港电影');
-
+insert into goods values(NULL, '警察故事', '这是一部好片', 10, 1, '香港嘉禾出品', '04.jpg', '香港电影');
+insert into goods values(NULL, '全名目击', '这是一部好片', 56, 1, '大陆某公司出品', '05.jpg', '香港电影');
+insert into goods values(NULL, '风声', '这是一部好片', 56, 1, '大陆某公司出品', '01.jpg', '香港电影');
+insert into goods values(NULL, '变形金刚', '这是一部好片', 56, 1, '欧美某公司出品', '01.jpg', '香港电影');
 
 drop table orders;
 

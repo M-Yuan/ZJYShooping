@@ -24,11 +24,6 @@
 	font-family: "������";
 	font-size: 9pt;
 }
-.rightstyle02{
-
-}
-
-
 .showDetail01 {
 	font-family: "������";
 	font-size: 9pt;
@@ -37,4 +32,19 @@
 	font-family: "������";
 	font-size: 9pt;
 }
+.memberLogin01 {
+	font-family: "������";
+	font-size: 9pt;	
+}
+
+
+/*页码超链接*/
+a:link { color:#dd3409;text-decoration:none; font-size:13px; }/* 超链接的样式 */
+a:visited { color:#601d9f;text-decoration:none; }
+a:visited:hover { color:#0078D9;text-decoration:underline; }
+a:hover { color:#09dd34;text-decoration:underline; }
+a:active { color:#3300ff;text-decoration:underline; }
+
+
+
 
