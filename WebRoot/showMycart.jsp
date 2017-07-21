@@ -95,7 +95,7 @@ MycartBO mycartBO = (MycartBO)session.getAttribute("MycartSession");
           <table width="100%" border="1" class="showMycart01" cellspacing="0" cellpadding="0">
             <tr>
                 <td width="60%" align="left">您共选择了价值&nbsp;￥<%=mycartBO.getTotalPrice() %>&nbsp;的商品,点<a href="index.jsp">此处</a>继续购物。</td>
-                <td width="40%" align="right"><a href="ShoppingCl2"><img border="0" src="images/cartnext.gif" width="87" height="19" /></a></td>
+                <td width="40%" align="right"><a href="ShoopingClIsLogin"><img border="0" src="images/cartnext.gif" width="87" height="19" /></a></td>
             </tr>
           </table>
         </td>

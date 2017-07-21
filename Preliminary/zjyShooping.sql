@@ -33,7 +33,8 @@ create table users(
 
 --向用户表中，添加初始化用户
 insert into users values(NULL, 'shunping', '韩顺平', 'shunping', 'hanshunping@tsinghua.org.cn', '010-88888888', '星星小区2单元203室', '733555', 1);
-
+insert into users values(NULL, 'admin', '管理员', 'admin', 'admin@tsinghua.org.cn', '010-88888888', '华润小区1单元1208室', '733555', 1);
+insert into users values(NULL, 'wangxiaoming', '小明', '123456', 'wxming@tsinghua.org.cn', '010-88888888', '恒大小区13单元407室', '733555', 3);
 --管理员表admin --暂时不建
 
 

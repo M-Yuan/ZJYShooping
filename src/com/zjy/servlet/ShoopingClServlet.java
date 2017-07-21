@@ -72,14 +72,14 @@ public class ShoopingClServlet extends HttpServlet {
 			// 默认情况下，购买书的数量是1
 			mycartBO.addGoods(goodsId, "1");
 			
-			System.out.println("ShoopingClServlet buyGoods");
+			//System.out.println("ShoopingClServlet buyGoods");
 		}else if(type.equals("deleteGoods")){
 			// 获得要购物的货物的id
 			String goodsId = request.getParameter("goodsId");
 			
 			mycartBO.deleteGoods(goodsId);
 			
-			System.out.println("ShoopingClServlet deleteGoods");
+			//System.out.println("ShoopingClServlet deleteGoods");
 		}else if(type.equals("updateGoods")){
 			//用户希望修改数量
 			//怎样在servlet中得到货物的id,和新的数量
@@ -99,13 +99,12 @@ public class ShoopingClServlet extends HttpServlet {
 			
 		}else if(type.equals("showGoods")){
 			//do nothing
-			System.out.println("ShoopingClServlet showGoods");
+			//System.out.println("ShoopingClServlet showGoods");
 		}else if(type.equals("clearGoods")){	
 			mycartBO.clearGoods();
 		}
 		
-		ArrayList alMycartInfo = new ArrayList();
-		alMycartInfo = mycartBO.getMycartInfo();
+		ArrayList alMycartInfo = mycartBO.getMycartInfo();
 		
 		request.setAttribute("mycartInfo", alMycartInfo);
 		request.getRequestDispatcher("showMycart.jsp").forward(request, response);
