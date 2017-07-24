@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.zjy.model.*;
+import java.util.*;
 
 /**
  * @ClassName:   ShoopingClIsLogin
@@ -61,12 +62,18 @@ public class ShoopingClIsLogin extends HttpServlet {
 		
 		if(userBean == null){
 			// 说明该用户第一次登录,创建一个登录session
-			userBean = new UserBean();
-			request.getSession().setAttribute("UserInfoSession", userBean);
+			//userBean = new UserBean();
+			//request.getSession().setAttribute("UserInfoSession", userBean);
 			
 			request.getRequestDispatcher("memLogin.jsp").forward(request, response);
 		}else{
-			// 说明该用户第一次购物,创建一个购物车
+			// 说明该用户已经登录过了
+			MycartBO mycartBO = (MycartBO)request.getSession().getAttribute("MycartSession");
+			
+			ArrayList arrList = mycartBO.getMycartInfo();
+			
+			request.setAttribute("myCartInfo", arrList);
+			
 			request.getRequestDispatcher("purchaserInfo.jsp").forward(request, response);
 		}
 	}

@@ -40,6 +40,10 @@
 	font-family: "������";
 	font-size: 9pt;	
 }
+.showOrders01 {
+	font-family: "������";
+	font-size: 9pt;
+}
 
 /*页码超链接*/
 a:link { color:#dd3409;text-decoration:none; font-size:13px; }/* 超链接的样式 */

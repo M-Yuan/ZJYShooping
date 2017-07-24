@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr>
 					<td align="right">密&nbsp;码:</td>
-					<td align="left"><input type="text" name="password" size="15"></td>
+					<td align="left"><input type="password" name="password" size="15"></td>
 				</tr>
 				<tr>
 					<td align="right"><input type="submit" name="Submit" value="用户登录" /></td>

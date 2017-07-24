@@ -109,7 +109,7 @@ MycartBO mycartBO = (MycartBO)session.getAttribute("MycartSession");
 		            <td colspan="4" align="left">您共选择了价值￥<%=mycartBO.getTotalPrice() %> 的商品</td>
 		            </tr>
 		          <tr align="center">
-		            <td colspan="4"><input type="submit" name="button3" id="button3" value="返回修改我的购物车" /></td>
+		            <td colspan="4"><input type="submit" name="BackMycart" value="返回修改我的购物车" /></td>
 		            </tr>
 		        </table>
 		        </td>
