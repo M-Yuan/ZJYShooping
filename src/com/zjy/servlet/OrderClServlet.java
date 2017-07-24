@@ -1,13 +1,13 @@
 /**
- * @FileName:    ShoopingClIsLogin.java
+ * @FileName:    OrderClServlet.java
  * @Description: TODO(用一句话描述该文件做什么)
  * @Copyright:   Copyright(C) 1998-2017
- * @Createdate:  2017年7月20日 下午23:09:32
+ * @Createdate:  2017年7月24日下午9:53:44
  *
  * Modification  History:
  * Date          Author         Version    Discription
  * -----------------------------------------------------------------------------------
- * 2017年7月20日        Administrator  1.0        1.0
+ * 2017年7月24日       Administrator  1.0        1.0
  * Why & What is modified: <修改原因描述>
  */
 package com.zjy.servlet;
@@ -20,15 +20,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.zjy.model.*;
-import java.util.*;
-
 /**
- * @ClassName:   ShoopingClIsLogin
- * @Description: TODO(这里用一句话描述这个类的作用)
+ * @author M.Yuan
+ *
  */
-public class ShoopingClIsLogin extends HttpServlet {
-
+public class OrderClServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -46,34 +42,19 @@ public class ShoopingClIsLogin extends HttpServlet {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
-
-		/**
-		 * 这是一个判断用户是否登录过的控制器
-		 * 1.如果登录过了，则进入显示用户信息和购物车信息的界面
-		 * 2.如果没登录过，则跳转至登录界面
-		 */
+		
 		
 		/*
-		 * 还是通过session来判断用户是否有登陆过
-		 */
-		UserBean userBean = (UserBean)request.getSession().getAttribute("UserInfoSession");
-		
-		if(userBean == null){
-			// 说明该用户第一次登录,创建一个登录session
-			userBean = new UserBean();
-			request.getSession().setAttribute("UserInfoSession", userBean);
-			
-			request.getRequestDispatcher("memLogin.jsp").forward(request, response);
+		if( != null){	
+			//添加ok
+			//准备显示订单的详细信息的数据,给下个页面shopping4.jsp
+			request.setAttribute("detailbean", oib);
+			request.getRequestDispatcher("showOrders.jsp").forward(request, response);
 		}else{
-			// 说明该用户已经登录过了
-			MycartBO mycartBO = (MycartBO)request.getSession().getAttribute("MycartSession");
-			
-			ArrayList arrList = mycartBO.getMycartInfo();
-			
-			request.setAttribute("myCartInfo", arrList);
-			
+			//添加订单失败
 			request.getRequestDispatcher("purchaserInfo.jsp").forward(request, response);
 		}
+		*/
 	}
 
 	/**
@@ -88,7 +69,6 @@ public class ShoopingClIsLogin extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		this.doGet(request, response);
 	}
 

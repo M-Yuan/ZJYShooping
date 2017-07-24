@@ -115,7 +115,7 @@ MycartBO mycartBO = (MycartBO)session.getAttribute("MycartSession");
 		        </td>
 		      </tr>
 		      <tr align="right">
-		        <td><img src="images/cartpre.gif" width="87" height="19" />&nbsp;&nbsp;<img src="images/cartnext.gif" width="87" height="19" /></td>
+		        <td><a href="ShoopingClServlet?type=showGoods"><img border="0" src="images/cartpre.gif" width="87" height="19" /></a>&nbsp;&nbsp;<a href="OrderClServlet"><img border="0" src="images/cartnext.gif" width="87" height="19" /></a></td>
 		      </tr>
 		    </table></td>
 		  </tr>

@@ -62,6 +62,8 @@ public class ShoopingClServlet extends HttpServlet {
 			// 说明该用户第一次购物,创建一个购物车，并放入sesion
 			mycartBO = new MycartBO();
 			request.getSession().setAttribute("MycartSession", mycartBO);
+			
+			System.out.println("创建 MycartSession...");
 		}
 		
 		

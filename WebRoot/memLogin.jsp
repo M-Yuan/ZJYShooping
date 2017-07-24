@@ -19,7 +19,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<!-- 引入css样式 -->
 	<link href="css/shopping.css" rel="stylesheet" type="text/css" />
-
+	
+	<script type="text/javascript">  
+		function Login(){  
+			window.open("MemLoginClServlet", "_self"); 
+		}  
+		function Register(){  
+			window.open("memRegister.jsp", "_self"); 
+		}  
+		     
+	</script>  
 </head>
 
 <body topmargin="0" background="images/bg.bmp">
@@ -38,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr align="center">
 	    <td align="center">
 	    	<!-- 通过submit提交form表单 -->
-	        <form action="MemLoginClServlet" method="post">
+	        <!-- <form action="MemLoginClServlet" method="post"> -->
 	          <table width="40%" border="1" bordercolor="#9999FF" class="memberLogin01" cellspacing="0" cellpadding="0">
 				<tr align="center">
 					<td colspan="2"><img src="images/dl.gif" width="149" height="63"></td>
@@ -52,11 +61,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td align="left"><input type="password" name="password" size="15"></td>
 				</tr>
 				<tr>
+					<!-- 
 					<td align="right"><input type="submit" name="Submit" value="用户登录" /></td>
 	            	<td align="left"><input type="submit" name="Submit2" value="用户注册" /></td>
+	            	 -->
+	            	<td align="right"><input type="submit" name="login" value="用户登录" onclick="Login()" /></td>
+	            	<td align="left"><input type="submit" name="register" value="用户注册" onclick="Register()" /></td>
 				</tr>
 	           </table>
-	         </form>
+	         <!-- </form> -->
 	     </td>
 		
       </tr>
