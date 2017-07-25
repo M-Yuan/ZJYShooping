@@ -93,9 +93,9 @@ create table orders(
 ---mysql
 create table orders(
 	ordersId bigint not null auto_increment primary key,
-	userid   bigint,
-	index par_id (userid),
-	foreign key (userid) references users(userid),
+	userId   bigint,
+	index par_id (userId),
+	foreign key (userId) references users(userId),
 	orderDate timestamp not null default now(),
 	payMode varchar(20) default '货到付款',
 	constraint CKC_DOC_CONTENT_VALPSTN check (payMode is null or (payMode in ('货到付款','支付宝付款'))),
@@ -124,4 +124,4 @@ create table orderDetail(
 ); 
 
 
-
+insert into orders (userId, isPayed, totalPrice) value(1, 0, 99);

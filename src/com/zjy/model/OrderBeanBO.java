@@ -48,11 +48,11 @@ public class OrderBeanBO {
 		
 		try{
 			// 组合sql语句
-			String sqlCont = "insert into orders (userid, isPayed, totalPrice) value(?, ?, ?);";
+			String sqlCont = "insert into orders (userId, isPayed, totalPrice) value(?, ?, ?);";
 			conn = new ConnectDataBase().getConnectMysql();
 			prst = conn.prepareStatement(sqlCont);
 			prst.setString(1, userId);
-			prst.setByte(2, (byte)0);
+			prst.setByte(2, (byte)1);
 			prst.setFloat(3, mycartBO.getTotalPrice());
 			// executeUpdate返回数据更新的结果数
 			int iRes = prst.executeUpdate();
@@ -83,7 +83,7 @@ public class OrderBeanBO {
 				stmt.executeBatch();
 				
 				// 获取orderBeanInfo, 多表查询
-				sqlCont ="select ordersId ,truename,address,postcode,phone,totalPrice,username,email from users,orders"+
+				sqlCont ="select ordersId, truename, address, postcode, phone, totalPrice, username, email from users,orders"+
 						" where ordersId=? and users.userid =(select orders.uesrid from orders where ordersId=?)";
 				
 				prst = conn.prepareStatement(sqlCont);

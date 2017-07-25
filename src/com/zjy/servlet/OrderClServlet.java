@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.zjy.model.*;
+
 /**
  * @author M.Yuan
  *
@@ -43,18 +45,26 @@ public class OrderClServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		
+		// 处理完成订单
+		OrderBeanBO orderBeanBO = new OrderBeanBO();
 		
-		/*
-		if( != null){	
+		// 得到购物车
+		MycartBO mycartBO = (MycartBO)request.getSession().getAttribute("MycartSession");
+		
+		// 得到用户Id
+		long userId = ((UserBean)request.getSession().getAttribute("UserInfoSession")).get_userId();
+		
+		OrderBeanInfo orderBeanInfo = orderBeanBO.getOrderBeanInfo(mycartBO, userId+"");
+		
+		if(orderBeanInfo != null){
 			//添加ok
 			//准备显示订单的详细信息的数据,给下个页面shopping4.jsp
-			request.setAttribute("detailbean", oib);
+			request.setAttribute("OrderDetailBean", orderBeanInfo);
 			request.getRequestDispatcher("showOrders.jsp").forward(request, response);
 		}else{
 			//添加订单失败
 			request.getRequestDispatcher("purchaserInfo.jsp").forward(request, response);
 		}
-		*/
 	}
 
 	/**
