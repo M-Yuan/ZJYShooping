@@ -44,4 +44,30 @@ public class ConnectDataBase {
         }
 		return conn;
 	}
+	
+	
+	
+	/**
+     * 批量导入数据
+     * @param listInsert
+     * @throws SQLException
+     */
+	/*
+    public void insertList(List<Device> listInsert) throws SQLException
+    {
+        @SuppressWarnings("deprecation")
+        PreparedStatement ps = getSession().connection().prepareStatement("insert into uhome_device("
+                + "dev_reg_flag, dev_model_code, dev_mac) "
+                + "values(?,?,?)");
+        for (Device device:listInsert)
+        {
+            ps.setObject(1, device.getRegFlag());
+            ps.setObject(2, device.getModelCode());
+            ps.setObject(3, device.getMac());
+            
+            ps.addBatch();
+        }
+        ps.executeBatch();
+    }
+    */	
 }

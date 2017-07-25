@@ -80,26 +80,48 @@ insert into goods values(NULL, '风声', '这是一部好片', 56, 1, '大陆某公司出品', 
 insert into goods values(NULL, '变形金刚', '这是一部好片', 56, 1, '欧美某公司出品', '01.jpg', '香港电影');
 
 drop table orders;
-
+---sql server
 create table orders(
-    ordersId bigint not null auto_increment primary key,
-	userId bigint not null,
-	orderDate varchar(12),
-	payMode varchar(40),
-	isPayed tinyint,
-	totalPrice float(7,4) DEFAULT NULL
+	ordersId bigint primary key identity(1,1),	--订单号
+	userId bigint constraint fk_client_id references users(userid), --哪个用户订的
+	orderDate datetime default getdate(), --下订单的时间
+	payMode varchar(20) check(payMode in('货到付款', '支付宝付款')) default '货到付款', --付款的方式
+	isPayed bit check (isPayed in (0,1)),  --0表示未付款，1表示已经付款
+	totalPrice float not null --总价格
+)
+
+---mysql
+create table orders(
+	ordersId bigint not null auto_increment primary key,
+	userid   bigint,
+	index par_id (userid),
+	foreign key (userid) references users(userid),
+	orderDate timestamp not null default now(),
+	payMode varchar(20) default '货到付款',
+	constraint CKC_DOC_CONTENT_VALPSTN check (payMode is null or (payMode in ('货到付款','支付宝付款'))),
+	isPayed bit check ( isPayed in (0 ,1)),
+	totalPrice float not null
 );
 
 
 drop table orderDetail;
+---sql server
+create table orders(
+	ordersId bigint constraint fk_order_id references orders(ordersId),	--订单号(并是一个外键，指向orders表)
+	goodsId bigint constraint fk_shangpin_id references goods(goodsId), --商品号(并是一个外键，指向goods表)
+	nums int not null --数量
+)
 
+---mysql
 create table orderDetail(
-	ordesIid bigint not null auto_increment primary key,
-	goodsId bigint,
-	nums int
-);
-
-
+	ordersId bigint,
+	index par_id (ordersId),
+	foreign key (ordersId) references orders(ordersId),
+	goodsId  bigint,
+	index order_id (goodsId),
+	foreign key (goodsId) references users(userid),
+	nums int not null
+); 
 
 
 
