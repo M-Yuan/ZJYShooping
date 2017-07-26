@@ -1,7 +1,12 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*, com.zjy.model.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+// 接收OrderDetailBean
+OrderBeanInfo orderBeanInfo = (OrderBeanInfo)request.getAttribute("OrderBeanInfomation");
+
+//ArrayList arrList = (ArrayList)request.getAttribute("OrderBeanInfomation");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -50,15 +55,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        <td width="8%">&nbsp;</td>
 	      </tr>
 	      <tr align="center">
-	        <td>2</td>
-	        <td>张三</td>
-	        <td>南山区西丽镇</td>
-	        <td>75533</td>
-	        <td>0755-88888888</td>
-	        <td>￥49.0</td>
-	        <td>zhangsan</td>
-	        <td>zhangsan@tsinghua.org.cn</td>
-	        <td><a href="" >查看详情</a></td>
+	        <td><%=orderBeanInfo.getOrdersId() %></td>
+	        <td><%=orderBeanInfo.getTruename() %></td>
+	        <td><%=orderBeanInfo.getAddress() %></td>
+	        <td><%=orderBeanInfo.getPostcode() %></td>
+	        <td><%=orderBeanInfo.getPhone() %></td>
+	        <td>￥<%=orderBeanInfo.getTotalPrice() %></td>
+	        <td><%=orderBeanInfo.getUsername() %></td>
+	        <td><%=orderBeanInfo.getEmail() %></td>
+	        <td><a href="#" >查看详情</a></td>
 	      </tr>
 	      <tr align="center">
 	        <td height="34" colspan="9">您的订单已完成，服务器将在稍后将在您的电子邮箱发送通讯信息，并确定订单信息。</td>

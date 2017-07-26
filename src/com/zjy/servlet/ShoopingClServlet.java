@@ -63,7 +63,7 @@ public class ShoopingClServlet extends HttpServlet {
 			mycartBO = new MycartBO();
 			request.getSession().setAttribute("MycartSession", mycartBO);
 			
-			System.out.println("创建 MycartSession...");
+			//System.out.println("创建 MycartSession...");
 		}
 		
 		

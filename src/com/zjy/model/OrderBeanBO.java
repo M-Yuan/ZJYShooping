@@ -74,7 +74,7 @@ public class OrderBeanBO {
 				// 循环的添加到orderDetail表，会影响效率, 在此使用批量操作数据库的方法，提高效率
 				for(int ilop = 0; ilop < arrList.size(); ilop++){
 					GoodsBean goodsBean = (GoodsBean)arrList.get(ilop);
-					stmt.addBatch("insert into orderDetail (ordersId, goodsId, nums) value(" + ordersId +
+					stmt.addBatch("insert into orderDetail (ordersId, goodsId, goodNums) value(" + ordersId +
 							", " + goodsBean.get_goodsId() + 
 							", " + mycartBO.getGoodsNumByGoodsId(goodsBean.get_goodsId()+"") +");");
 				}
@@ -84,7 +84,7 @@ public class OrderBeanBO {
 				
 				// 获取orderBeanInfo, 多表查询
 				sqlCont ="select ordersId, truename, address, postcode, phone, totalPrice, username, email from users,orders"+
-						" where ordersId=? and users.userid =(select orders.uesrid from orders where ordersId=?)";
+						" where ordersId=? and users.userId =(select orders.userId from orders where ordersId=?)";
 				
 				prst = conn.prepareStatement(sqlCont);
 				prst.setInt(1, ordersId);

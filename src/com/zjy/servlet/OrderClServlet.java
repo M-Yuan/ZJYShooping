@@ -52,14 +52,14 @@ public class OrderClServlet extends HttpServlet {
 		MycartBO mycartBO = (MycartBO)request.getSession().getAttribute("MycartSession");
 		
 		// 得到用户Id
-		long userId = ((UserBean)request.getSession().getAttribute("UserInfoSession")).get_userId();
+		long userId = ((UserBean)request.getSession().getAttribute("UserBeanSession")).get_userId();
 		
-		OrderBeanInfo orderBeanInfo = orderBeanBO.getOrderBeanInfo(mycartBO, userId+"");
+		OrderBeanInfo orderBeanInfo = orderBeanBO.getOrderBeanInfo(mycartBO, (userId+""));
 		
 		if(orderBeanInfo != null){
 			//添加ok
 			//准备显示订单的详细信息的数据,给下个页面shopping4.jsp
-			request.setAttribute("OrderDetailBean", orderBeanInfo);
+			request.setAttribute("OrderBeanInfomation", orderBeanInfo);
 			request.getRequestDispatcher("showOrders.jsp").forward(request, response);
 		}else{
 			//添加订单失败
