@@ -73,28 +73,26 @@ ArrayList arrList = goodsbb.getGoodsByPage(6,pageNow);
   				//System.out.println("\r");
   				
   				itimes++;
-  			}
-  			
-  			
+  			} 			
   	%>
     <td width="33%" height="190" topMargin="0">
 		<table width="100%" height="170" border="1" cellpadding="0" cellspacing="0" class="rightstyle01" >
 		  <tr>
 			<td width="32%" rowspan="3" align="left">				
-					<img src="images/<%=goodsBean.get_goodsPhoto() %>" width="112" height="112" />
+				<img src="images/<%=goodsBean.get_goodsPhoto() %>" width="112" height="112" />
 			</td>
-			<td width="68%" height="39">&nbsp;</td>
+			<td width="68%" height="25">&nbsp;</td>
 		  </tr>
 		  <tr>
-			<td height="41" ><a href="ShowGoodsClServlet?type=showDetail&goodsID=<%=goodsBean.get_goodsId() %>"><%=goodsBean.get_goodsName() %></a></td>
+			<td height="40" ><a href="ShowGoodsClServlet?type=showDetail&goodsID=<%=goodsBean.get_goodsId() %>"><%=goodsBean.get_goodsName() %></a></td>
 		  </tr>
 		  <tr>
-			<td height="17" >价格：$<%=goodsBean.get_goodsPrice() %>></td>
+			<td height="25" >价格：$<%=goodsBean.get_goodsPrice() %></td>
 		  </tr>
 		  <tr>
-			<td height="77" colspan="2" ><div style="overflow:auto;width="90%";height=60px" >简单介绍： <%=goodsBean.get_goodsIntro() %></div></td>
+			<td height="50" colspan="2" align="left"><div style="width:98% ;height:70;border:0 solid navy;overflow:auto;" >简单介绍： <%=goodsBean.get_goodsIntro() %></div></td>
 		  </tr>
-		 </table>
+		</table>
 	</td>
 	<%
 			

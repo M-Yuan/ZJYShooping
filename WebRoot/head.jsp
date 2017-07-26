@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <td><table width="100%" border="0">
       <tr align="center">
         <td width="11%">&nbsp;</td>
-        <td width="11%" class="headfont02"><a>首页</a></td>
+        <td width="11%" class="headfont02"><a href="index.jsp" >首页</a></td>
         <td width="11%">&nbsp;</td>
         <td width="11%" class="headfont02">香港电影</td>
         <td width="11%">&nbsp;</td>
