@@ -16,6 +16,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	
+	<!-- 网页自适应所有屏幕宽度  -->
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	
 	<!-- 引入css样式 -->
 	<link href="css/shopping.css" rel="stylesheet" type="text/css" />
 	
@@ -26,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-	<body topmargin="0" background="images/bg.bmp">
+	<body topmargin="0" background="images/bg.bmp" class="abc">
 	<table width="80%" border="1" align="center" cellpadding="0" cellspacing="0">
 	  <tr align="center" valign="middle">
 	    <td height="94" colspan="2">

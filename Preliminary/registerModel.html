@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<form action="http://www.verycd.com/search/folders" method="get">
+<div id="top-search">
+  <input type="text"   id="top-search-input" name="kw" value="" style="margin-left: 10px; width: 280px;"
+/><input type="submit" id="top-search-lib" class="top-search-button" value="资源" style="margin-left: 30px;"
+/><input type="button" id="top-search-site" class="top-search-button" value="高级搜索"
+/><input type="button" id="top-search-advance" class="top-search-button" value="发布资源"
+/></div><!-- End #top-search -->
+</form>
+<form name="form2" method="post" onsubmit="return signup(this)">
+<input name="continue" type="hidden" value="http://www.verycd.com" />
+<div style="display:none" id="repost_box_reg">
+<!-- 转发参数 -->
+<!-- end of 转发参数 -->
+</div>
+
+<div class="sign_main" id="sign_main">
+<div class="sign-nav">
+	<span class="label on">新用户注册</span>
+	<a class="label" href="/signin">登录</a>
+</div>
+<div class="sign_div">
+<!--创建新帐号-->
+
+        <ul>
+            <li>
+                <span class="left"><label for="username_signup">用户名：</label></span>
+                <input tabindex="10" type="text" name="username" id="username_signup" value="" size="20" />&nbsp;&nbsp;<span id="userNote" style="font-size:12px;"></span>
+            </li>
+            <li>
+                <span class="left"><label for="signup_password">密码(6位以上)：</label></span>
+                <input tabindex="11" type="password" name="password" id="signup_password" value="" size="20"/>&nbsp;&nbsp;<span id="pwdNote" style="font-size: 12px;"></span>
+            </li>
+            <li>
+                <span class="left"><label for="confirm_password">再次输入密码：</label></span>
+                <input tabindex="12" type="password" name="confirm_password" id="confirm_password" value="" size="20"/>&nbsp;&nbsp;<span id="cfNote" style="font-size: 12px;"></span>
+            </li>
+            <li>
+                <span class="left"><label for="email">您的电子邮件：</label></span>
+                <input tabindex="13" type="text" name="email" id="email" value="" size="20"/>&nbsp;&nbsp;<span id="emailNote" style="font-size: 12px;"></span>
+            </li>
+                    </ul>
+        <div class="agreement">
+            <input type="checkbox" checked="true" id="signup_agreement" tabindex="16"/>
+            <label for="signup_agreement" />我已看过并同意 <a target="_blank" href="http://www.verycd.com/about/account/" tabindex="17">注册协议内容</a></label>
+        </div>
+        <div class="signup_button">
+			<span id="signup_btn" class="button_1">
+                <strong>
+                	<input id="signup_sub" type="submit" name="register_submit" tabindex="18" value="创建新账户" />
+				</strong>
+            </span>
+        </div>
+        <div class="other_account">
+            <span>用其他账号登录:
+                <a href="/signin/sinat/*/http://www.verycd.com" onclick="VeryCD.Track('/stat/loginSina/');" title="登录后直接连接到新浪微博" tabindex="19">&nbsp;<span class="t_icon sinat_icon"></span><em>新浪微博</em></a>
+                <a href="/signin/qqt/*/http://www.verycd.com" onclick="VeryCD.Track('/stat/loginQqt/');" title="登录后直接连接到腾讯微博" tabindex="20">&nbsp;<span class="t_icon qqt_icon"></span><em>腾讯微博</em></a>
+            </span>
+        </div>
+
+    </div>
+</div>
+</form>
+</body>
+</html>

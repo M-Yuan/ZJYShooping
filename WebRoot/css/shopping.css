@@ -1,3 +1,10 @@
+.adaptiveScreen{
+    width: calc(100%);/*用100%的屏幕宽度减去已经知道固定的宽度，就是自适应的部分*/
+    overflow: auto;
+    background-color: #FFF;
+    border: 1px #999 solid;
+    margin: 20px;	
+}
 .headfont01 {
 	font-family: "������";
 	font-size: 9pt;
@@ -44,6 +51,30 @@
 	font-family: "������";
 	font-size: 9pt;
 }
+
+/*实现屏幕自适应*/
+.abc{ height:300px; border:1px solid #000; margin:0 auto} 
+@media screen and (min-width: 1201px) { 
+.abc {width: 1200px} 
+} 
+/* css 注释说明：设置了浏览器宽度不小于1201px时 abc 显示1200px宽度 */ 
+
+@media screen and (max-width: 1200px) { 
+.abc {width: 900px} 
+} 
+/* 设置了浏览器宽度不大于1200px时 abc 显示900px宽度 */ 
+
+@media screen and (max-width: 900px) { 
+.abc {width: 200px;} 
+} 
+/* 设置了浏览器宽度不大于900px时 abc 显示200px宽度 */ 
+
+@media screen and (max-width: 500px) { 
+.abc {width: 100px;} 
+} 
+/* 设置了浏览器宽度不大于500px时 abc 显示100px宽度 */ 
+
+
 
 /*页码超链接*/
 a:link { color:#dd3409;text-decoration:none; font-size:13px; }/* 超链接的样式 */
