@@ -65,6 +65,41 @@ public class UserBeanBO {
 		
 		return userBean;
 	}
+
+	/**
+	 * @Description: 验证UserBean信息是否存在于users表
+	 * @param	   : username
+	 * @param	   : password
+	 */
+	public boolean checkUserExist(String userName, String passWord){
+		// 初始化返回值为false
+		boolean result = false;
+		try{
+			String sqlContent = "select passwd from users where username=? limit 1";
+			
+			conn = new ConnectDataBase().getConnectMysql();
+			prst = conn.prepareStatement(sqlContent);
+			prst.setString(1, userName);
+			rest = prst.executeQuery();
+			
+			while(rest.next()){
+				// 获取查询结果
+				String pw = rest.getString(1);
+				
+				if(pw.equals(passWord)){	// 存在用户信息
+					result = true;
+				}
+			}
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+			System.out.println("验证UserBean信息时出现问题！");
+		}finally{
+			this.CloseDatabase();
+		}
+	
+		return result;
+}
 	
 	/**
 	 * @Description: 验证UserBean信息
@@ -99,6 +134,89 @@ public class UserBeanBO {
 		}
 	
 		return result;
+	}
+	
+	/**
+	 * @Description: 验证UserBean两次输入的密码是否相同
+	 * @param	   : stPassword
+	 * @param	   : ndPassword
+	 */
+	/*
+	public boolean checkUserPassword(String stPassword, String ndPassword){
+		boolean bRes = true;
+		
+		
+		return bRes;
+	}
+	*/
+	
+	
+	/**
+	 * @Description: 通过username来获取到userId
+	 */
+	public String getUserIdByUserName(String username){
+		String userId = "";
+		try{
+			// 定义sql语句
+			String sqlContent = "select userId from users where username=?;";
+			
+			
+			conn = new ConnectDataBase().getConnectMysql();
+			prst = conn.prepareStatement(sqlContent);
+			prst.setString(1, username);
+			rest = prst.executeQuery();
+			
+			while(rest.next()){
+				// 获取查询结果
+				userId = rest.getString(1);	
+			}
+		}catch(Exception ex){
+			System.out.println("getUserIdByUserName时出现了错误！");
+			ex.printStackTrace();
+		}
+		
+		return userId;
+	}
+	
+	/**
+	 * @Description: 插入UserBean信息
+	 * @param	   : userBean详细信息
+	 */
+	public boolean InsertUserBean(UserBean userBean){
+		boolean bRes = true;	
+		try{
+			// 定义sql语句
+			String sqlContent = "insert into users (username, truename, passwd, email, phone, address, postcode, grade) values(?, ?, ?, ?, ?, ?, ?, ?);";
+			
+			// 执行数据库操作
+			conn = new ConnectDataBase().getConnectMysql();
+			prst = conn.prepareStatement(sqlContent);
+			prst.setString(1, userBean.get_userName());
+			prst.setString(2, userBean.get_userTruename());
+			prst.setString(3, userBean.get_userPasswd());
+			prst.setString(4, userBean.get_userEmail());
+			prst.setString(5, userBean.get_userPhone());
+			prst.setString(6, userBean.get_userAddress());
+			prst.setString(7, userBean.get_userPostcode());
+			prst.setInt(8, userBean.get_userGrade());
+			
+			// 返回操作数据库成功记录条数
+			int iRes = prst.executeUpdate();
+			
+			if(iRes <= 0){
+				/**
+				 * sql语句执行失败，用户注册失败
+				 */
+				bRes = false;
+			}
+		}catch(Exception ex){
+			bRes = false;
+			System.out.println("InsertUserBean时出现了错误！");
+			ex.printStackTrace();
+		}finally{
+			this.CloseDatabase();
+		}
+		return bRes;
 	}
 	
 	/**

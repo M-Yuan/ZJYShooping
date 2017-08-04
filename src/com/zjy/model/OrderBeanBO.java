@@ -54,6 +54,10 @@ public class OrderBeanBO {
 			prst.setString(1, userId);
 			prst.setByte(2, (byte)1);
 			prst.setFloat(3, mycartBO.getTotalPrice());
+			
+			System.out.println("userId = " + userId);
+			System.out.println("totalPrice = " + mycartBO.getTotalPrice());
+			
 			// executeUpdate返回数据更新的结果数
 			int iRes = prst.executeUpdate();
 			if(iRes == 1){	// 在orders表中插入数据成功
@@ -78,7 +82,7 @@ public class OrderBeanBO {
 							", " + goodsBean.get_goodsId() + 
 							", " + mycartBO.getGoodsNumByGoodsId(goodsBean.get_goodsId()+"") +");");
 				}
-				
+
 				// 开始批量执行
 				stmt.executeBatch();
 				

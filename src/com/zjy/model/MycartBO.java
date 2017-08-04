@@ -99,7 +99,7 @@ public class MycartBO {
 				
 			sql += sqlTemp;
 			sql += ");";
-			//System.out.println("getMycartInfo sql = " + sql);
+			System.out.println("getMycartInfo sql = " + sql);
 			
 			conn = new ConnectDataBase().getConnectMysql();
 			prst = conn.prepareStatement(sql);

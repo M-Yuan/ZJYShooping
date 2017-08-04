@@ -13,8 +13,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
         <td><img src="images/logo.gif" width="128" height="49" /></td>
         <td><img src="images/test.gif" width="500" height="90" /></td>
-        <td bordercolor="#F0F0F0"><p class="headfont01"><img src="images/account.gif" width="19" height="14" />【我的账号】</p>
-          <p class="headfont01"><img src="images/cart.gif" width="20" height="15" /><a href="ShoopingClServlet?type=showGoods">【我的购物车】</a></p></td>
+        <td bordercolor="#F0F0F0">
+          <p class="headfont01"><img src="images/account.gif" width="19" height="14" /><a href="AccountClServlet" >【我的账号】</a></p>
+          <p class="headfont01"><img src="images/cart.gif" width="20" height="15" /><a href="ShoopingClServlet?type=showGoods">【我的购物车】</a></p>
+         </td>
       </tr>
     </table></td>
   </tr>

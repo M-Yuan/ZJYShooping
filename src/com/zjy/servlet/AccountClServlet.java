@@ -1,32 +1,35 @@
 /**
- * @FileName:    OrderClServlet.java
+ * @FileName:    AccountClServlet.java
  * @Description: TODO(用一句话描述该文件做什么)
  * @Copyright:   Copyright(C) 1998-2017
- * @Createdate:  2017年7月24日下午9:53:44
+ * @Createdate:  2017年8月3日下午11:19:05
  *
  * Modification  History:
  * Date          Author         Version    Discription
  * -----------------------------------------------------------------------------------
- * 2017年7月24日       Administrator  1.0        1.0
+ * 2017年8月3日       Administrator  1.0        1.0
  * Why & What is modified: <修改原因描述>
  */
 package com.zjy.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.zjy.model.*;
+import com.zjy.model.MycartBO;
+import com.zjy.model.UserBean;
+import com.zjy.model.UserBeanBO;
 
 /**
  * @author M.Yuan
  *
  */
-public class OrderClServlet extends HttpServlet {
+public class AccountClServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -45,28 +48,23 @@ public class OrderClServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		
-		// 处理完成订单
-		OrderBeanBO orderBeanBO = new OrderBeanBO();
+		// 定义用户信息操作对象
+		//UserBeanBO userBeanBO = new UserBeanBO();
 		
-		// 得到购物车
-		MycartBO mycartBO = (MycartBO)request.getSession().getAttribute("MycartSession");
+		//From:MemLoginClServlet->获取UserBean信息
+		UserBean userBean = (UserBean)request.getSession().getAttribute("UserBeanSession");
 		
-		// 得到用户Id
-		long userId = ((UserBean)request.getSession().getAttribute("UserBeanSession")).get_userId();
-		
-		System.out.println("OrderServlet userId = " + userId);
-		
-		OrderBeanInfo orderBeanInfo = orderBeanBO.getOrderBeanInfo(mycartBO, (userId+""));
-		
-		if(orderBeanInfo != null){
-			//添加ok
-			//准备显示订单的详细信息的数据,给下个页面shopping4.jsp
-			request.setAttribute("OrderBeanInfomation", orderBeanInfo);
-			request.getRequestDispatcher("showOrders.jsp").forward(request, response);
+		if(userBean != null){
+			// 从Session获取购物车信息，使用request方法传递给下一页面（session不宜过大）
+			//MycartBO mycartBO = (MycartBO)request.getSession().getAttribute("MycartSession");
+			//ArrayList arrList = mycartBO.getMycartInfo();
+			//request.setAttribute("myCartInfo", arrList);
+			
+			request.getRequestDispatcher("purchaseInfo.jsp").forward(request, response);
 		}else{
-			//添加订单失败
-			request.getRequestDispatcher("purchaserInfo.jsp").forward(request, response);
+			request.getRequestDispatcher("memLogin.jsp").forward(request, response);
 		}
+
 	}
 
 	/**

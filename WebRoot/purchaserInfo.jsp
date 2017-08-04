@@ -51,12 +51,8 @@ MycartBO mycartBO = (MycartBO)session.getAttribute("MycartSession");
 		            <td colspan="2" align="center">购买人信息</td>
 		          </tr>
 		          <tr>
-		            <td width="50%" align="right">用&nbsp;&nbsp;户&nbsp;&nbsp;Id</td>
-		            <td width="50%" align="left"><input type="text" name="textfield" id="textfield" value="<%=userBean.get_userId() %>" /></td>
-		          </tr>
-		          <tr>
 		            <td width="50%" align="right">用&nbsp;&nbsp;户&nbsp;&nbsp;名</td>
-		            <td width="50%" align="left"><input type="text" name="textfield" id="textfield" value="<%=userBean.get_userName() %>" /></td>
+		            <td width="50%" align="left"><input type="text" name="userName" id="userName" value="<%=userBean.get_userName() %>" /></td>
 		          </tr>
 		          <tr>
 		            <td align="right">*真实姓名</td>

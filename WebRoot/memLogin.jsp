@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr align="center">
 	    <td align="center">
 	    	<!-- 通过submit提交form表单 -->
-	        <form action="MemLoginClServlet" method="post">
+	        <form action="MemLoginClServlet?type=userLogin" method="post">
 	          <table width="40%" border="1" bordercolor="#9999FF" class="memberLogin01" cellspacing="0" cellpadding="0">
 				<tr align="center">
 					<td colspan="2"><img src="images/dl.gif" width="149" height="63"></td>
